@@ -7,4 +7,7 @@
 <link href="{{asset('/')}}FoodDude/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
 <!-- THEME STYLES-->
 <link href="{{asset('/')}}FoodDude/assets/css/main.min.css" rel="stylesheet" />
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
 <!-- PAGE LEVEL STYLES-->

@@ -144,14 +144,13 @@
                     @endphp
                     <span></span>{{ucfirst($first_name[0])}}<i class="fa fa-angle-down m-l-5"></i></a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
+                    <a class="dropdown-item" href="{{route('admin.profile')}}"><i class="fa fa-user"></i>Profile</a>
                     <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a>
-                    <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>
+                    <a href="" class="text-danger dropdown-item"><i class="fa fa-user-plus"></i> Add admin</a>
                     <li class="dropdown-divider"></li>
                     <a class="dropdown-item fa fa-power-off pr-1" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>

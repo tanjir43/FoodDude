@@ -41,15 +41,11 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-            </div>
+            </div
         </div>
 
         <div class="form-group pb-2">
             <button class="btn btn-info btn-block" type="submit">Login</button>
-        </div>
-
-        <div class="text-center">Not a member?
-            <a class="color-white" href="register.html">Create account</a>
         </div>
     </form>
 </div>

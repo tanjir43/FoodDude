@@ -11,5 +11,5 @@ class Admin extends Authenticatable
 {
     use HasApiTokens,HasFactory,Notifiable;
     protected  $guard ='admins';
-    protected $fillable = ['full_name','email','password','mobile','image','status'];
+    protected $fillable = ['full_name','email','password','mobile','image','status','designation','facebook_url','twitter_url','pinterest_url','linkedin_url','bio','slug'];
 }

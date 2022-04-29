@@ -13,5 +13,16 @@
 <script src="{{asset('/')}}FoodDude/assets/js/app.min.js" type="text/javascript"></script>
 <!-- PAGE LEVEL SCRIPTS-->
 <script src="{{asset('/')}}FoodDude/assets/js/scripts/dashboard_1_demo.js" type="text/javascript"></script>
+<!-- SUMMERNOTE-->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
+<!-- FILE MANAGER-->
+<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script> $('#lfm').filemanager('image');</script>
 
 @yield('script')
