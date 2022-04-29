@@ -1,5 +1,6 @@
 <!-- CORE PLUGINS-->
 <script src="{{asset('/')}}FoodDude/assets/vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <script src="{{asset('/')}}FoodDude/assets/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
 <script src="{{asset('/')}}FoodDude/assets/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="{{asset('/')}}FoodDude/assets/vendors/metisMenu/dist/metisMenu.min.js" type="text/javascript"></script>
@@ -23,6 +24,14 @@
 </script>
 <!-- FILE MANAGER-->
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-<script> $('#lfm').filemanager('image');</script>
+<script>
+    $('#lfm').filemanager('image');
+</script>
+<script>
+    setTimeout(function () {
+        $('#alert').slideUp();
+    },4000);
+</script>
+
 
 @yield('script')
