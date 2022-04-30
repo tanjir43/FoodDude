@@ -24,12 +24,13 @@ class EditAdminRequest extends FormRequest
     public function rules()
     {
         return [
+//            'g-recaptcha-response' => 'required|captcha',
             'full_name' => 'required|max:25|string',
             'email'     => 'required|email',
             'designation' => 'required| max:50',
             'bio'         =>'max:1000',
             'image'       =>'max:3000',
-            'status'      => 'min:1',
+            'status'      => 'min:1|in:active,inactive',
         ];
     }
 }

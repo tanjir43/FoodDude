@@ -62,7 +62,7 @@
                             @endif
                             <ul class="nav nav-tabs tabs-line">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="#tab-1" data-toggle="tab"><i class="ti-bar-chart"></i> Overview</a>
+                                    <a class="nav-link active " href="#tab-1" data-toggle="tab"><i class="ti-bar-chart"></i> Overview</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#tab-2" data-toggle="tab"><i class="ti-settings"></i> Settings</a>
@@ -70,7 +70,7 @@
                             </ul>
                             <div class="tab-content">
 
-                                <div class="tab-pane fade  " id="tab-1">
+                                <div class="tab-pane fade show active " id="tab-1">
                                     <div class="row">
                                         <div class="col-md-6" style="border-right: 1px solid #eee;">
                                             In here i will try to show This admin curriculam activities
@@ -91,13 +91,14 @@
                                             <div class="col-sm-12 form-group">
                                                 <label>Full Name</label>
                                                 <input class="form-control" type="text" placeholder="Full Name" name="full_name" value="{{auth('admin')->user()->full_name}}">
+{{--                                                @captcha--}}
                                             </div>
 
                                         </div>
 
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" type="email" placeholder="Email address" name="email" value="{{auth('admin')->user()->email}}">
+                                            <input class="form-control" type="email" placeholder="Email address" readonly name="email" value="{{auth('admin')->user()->email}}">
                                         </div>
 
                                         <div class="form-group">
@@ -146,19 +147,34 @@
                                             <label>Linkedin url</label>
                                             <input class="form-control" type="text" placeholder="Linkedin url" name="linkedin_url" value="{{auth('admin')->user()->linkedin_url}}">
                                         </div>
-{{--                                        <div class="form-group">--}}
-{{--                                            <label>Password</label>--}}
-{{--                                            <input class="form-control" type="password" name="password"  placeholder="Password" >--}}
-{{--                                        </div>--}}
+                                        <div class="form-group">
+                                            <label>Status</label>
+                                            <select name="status" class="form-control">
+                                                <option value="active" {{$user->status== 'active' ? 'selected' : ''}}>Active</option>
+                                                <option value="inactive" {{$user->status =='inactive' ? 'selected' : ''}}>Inactive</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Role</label>
+                                            <select name="status"  readonly class="form-control">
+                                                <option value="active"   selected {{$user->role== 'admin' ? 'selected' : ''}}>Admin</option>
+                                                <option value="inactive" disabled {{$user->role =='editor' ? 'selected' : ''}}>Editor</option>
+                                                <option value="inactive" disabled {{$user->role =='moderator' ? 'selected' : ''}}>Moderator</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-danger">Password</label>
+                                            <input class="form-control text-danger" type="password" name="password"  placeholder="Password" >
+                                        </div>
 
                                         <div class="form-group">
                                             <button class="btn btn-outline-success" type="submit">Submit</button>
+
                                         </div>
                                     </form>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -166,43 +182,5 @@
             </div>
 @endsection
 
-{{--@section('scripts')--}}
-{{--    <script>--}}
-{{--     $('#change_password_form').validate({--}}
-{{--        ignore: 'ignore',--}}
-{{--         errorClass: 'invalid',--}}
-{{--         validClass: 'success',--}}
-{{--         rules: {--}}
-{{--             current_password:{--}}
-{{--                required :true,--}}
-{{--                 minLength:4,--}}
-{{--                 maxlength:20,--}}
-{{--            },--}}
-{{--             new_password:{--}}
-{{--                 required :true,--}}
-{{--                 minLength: 4,--}}
-{{--                 maxlength:20,--}}
-{{--            },--}}
-{{--             confirm_password:{--}}
-{{--                 required:true,--}}
-{{--                 equalTo: '#new_password'--}}
-{{--             }--}}
-{{--         },--}}
-{{--         message: {--}}
-{{--             current_password:{--}}
-{{--                 required:"Enter your current password",--}}
-{{--             },--}}
-{{--             new_password:{--}}
-{{--                 required:"Enter your new password",--}}
-{{--             },--}}
-{{--             confirm_password:{--}}
-{{--                 required:"Please confirm your password"--}}
-{{--             },--}}
-{{--         },--}}
-{{--         submitHandler:function (form){--}}
-{{--            $.LoadingOverlay("show");--}}
-{{--            form.submit();--}}
-{{--         }--}}
-{{--     });--}}
-{{--    </script>--}}
-{{--@endsection--}}
+
+

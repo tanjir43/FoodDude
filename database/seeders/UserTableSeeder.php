@@ -26,6 +26,20 @@ class UserTableSeeder extends Seeder
                 'image'     => '/FoodDude/frontend/img/men.jpg',
                 'mobile'    => '0181000000',
                 'designation'=> 'Web developer',
+                'role'       => 'admin'
+            ],
+        ]);
+
+        DB::table('roles')->insert([
+            [
+                'full_name' => 'Editor Tanjir',
+                'email'     => 'editor@gmail.com',
+                'slug'      => Str::slug('Editor'.time()),
+                'password'  =>  Hash::make('56789'),
+                'image'     => '/FoodDude/frontend/img/men1.jpg',
+                'mobile'    => '0181000010',
+                'designation'=> 'Editor',
+                'role'       => 'editor'
             ],
         ]);
     }

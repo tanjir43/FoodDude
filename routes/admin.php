@@ -11,8 +11,9 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
     Route::get('/profile/{id}',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'profile'])->name('admin.profile');
     Route::post('/profile-update/{id}',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'profileUpdate'])->name('profile.update');
-    Route::get('/profile-update-password',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'passwordUp'])->name('password.up');
-    Route::post('/profile-update-password',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'passwordUpdate'])->name('password.update');
+
+    Route::get('new-user-role',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'adminRole'])->name('admin.add_role');
+    Route::post('new-user-role',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'adminCreateRole'])->name('admin.add_user_role');
 });
 Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();

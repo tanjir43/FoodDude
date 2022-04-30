@@ -10,7 +10,7 @@
                 $full_name = auth('admin')->user()->full_name;
                 $firstname = explode(' ', $full_name);
                 @endphp
-                <div class="font-strong">{{ucfirst($firstname[0])}}</div><small class="text-success">Administrator <i class="fa fa-check-circle"></i></small></div>
+                <div class="font-strong">{{ucfirst($firstname[0])}}</div><small class="text-success">{{auth('admin')->user()->role}} <i class="fa fa-check-circle"></i></small></div>
         </div>
         <ul class="side-menu metismenu">
             <li>

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAdminPassword extends FormRequest
+class CreateNewAdmin extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,13 @@ class UpdateAdminPassword extends FormRequest
     public function rules()
     {
         return [
-
-            'current_password' => 'required|min:4|max:20',
-            'new_password'     => 'required|min:4|max:20',
-            'confirm_password' => 'required|same:new_password',
+            'full_name'   => 'required|max:25|string',
+            'email'       => 'required|email',
+            'designation' => 'required| max:50',
+            'bio'         =>'max:1000',
+            'image'       =>'max:3000',
+            'status'      => 'min:1|in:active,inactive',
+            'role'        => 'min:1|in:admin,moderator,editor',
         ];
     }
 }
