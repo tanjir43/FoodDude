@@ -42,5 +42,15 @@ class UserTableSeeder extends Seeder
                 'role'       => 'editor'
             ],
         ]);
+        DB::table('banners')->insert([
+            [
+                'title'       => 'Delicious Desert',
+                'slug'        => Str::slug('Delicious-Desert'.time()),
+                'description' => 'Best Desert in your  area',
+                'image'       => '/FoodDude/image/banner.jpg',
+                'condition'   => 'banner',
+                'status'      => 'active',
+            ],
+        ]);
     }
 }

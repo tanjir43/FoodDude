@@ -16,6 +16,9 @@
 <script src="{{asset('/')}}FoodDude/assets/js/scripts/dashboard_1_demo.js" type="text/javascript"></script>
 <!-- SUMMERNOTE-->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- SwitchToggle-->
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
 
 <script>
     $(document).ready(function() {

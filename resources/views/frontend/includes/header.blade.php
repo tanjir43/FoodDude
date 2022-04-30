@@ -2,7 +2,7 @@
 <section class="py-2  nav-bg-color">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <img src="img/logo.png" alt="" class="h-45">
+            <img src="{{asset('/')}}FoodDude/frontend/img/logo.png" alt="" class="h-45">
             <button type="button" class="navbar-toggler " data-toggle="collapse" data-target="#menu">
                 <span class="navbar-toggler-icon "></span>
             </button>

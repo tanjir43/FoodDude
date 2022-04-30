@@ -14,6 +14,10 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
     Route::get('new-user-role',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'adminRole'])->name('admin.add_role');
     Route::post('new-user-role',[\App\Http\Controllers\Admin\Profile\ProfileController::class,'adminCreateRole'])->name('admin.add_user_role');
+
+    //banner - section
+    Route::resource('banner',\App\Http\Controllers\Admin\BannerController::class);
+
 });
 Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
