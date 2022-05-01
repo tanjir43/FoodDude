@@ -52,5 +52,18 @@ class UserTableSeeder extends Seeder
                 'status'      => 'active',
             ],
         ]);
+        DB::table('restaurants')->insert([
+            [
+                'name'        => 'SANTOOR RESTAURANT',
+                'slug'        => Str::slug('SANTOOR-RESTAURANT'.time()),
+                'slogan'      => 'Choose from the large selection sticky header and more',
+                'image'       => '/FoodDude/image/banner.jpg',
+                'mobile'      => '01800000000',
+                'email'       => 'restaurant@gmail.com',
+                'owner'       => 'Tanjir',
+                'password'    => Hash::make('56789'),
+                'status'      => 'active',
+            ],
+        ]);
     }
 }

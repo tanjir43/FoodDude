@@ -66,11 +66,62 @@
                     <td class="text-center text-danger">No Banner or promos created yet...</td>
                 @endforelse
             </table>
-
         </div>
+@endsection
 
+@section('script')
+<!-- change status -->
+            <script>
+                $('input[name=toggle]').change(function () {
+                    var mode = $(this).prop('checked');
+                    var id   = $(this).val();
+                    $.ajax({
+                        url  : "{{route('banner.status')}}",
+                        type : "POST",
+                        data :{
+                            _token : '{{csrf_token()}}',
+                            mode : mode,
+                            id   : id,
+                        },
+                        success: function (response) {
+                            if(response.status){
+                                alert(response.msg)
+                            }else{
+                                alert('Please try again');
+                            }
+                        }
+                    });
+                });
+            </script>
 
-
-
-
+   <!-- Delete banner -->
+            <script>
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $('.dltBtn').click(function (e) {
+                    var form   = $(this).closest('form');
+                    var dataID = $(this).data('id');
+                    e.preventDefault();
+                    swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                form.submit();
+                                swal("Poof! Your imaginary file has been deleted!", {
+                                    icon: "success",
+                                });
+                            } else {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                     });
+            </script>
 @endsection

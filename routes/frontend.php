@@ -1,4 +1,4 @@
 <?php
 
 
-Route::get('/', [App\Http\Controllers\Frontend\HomeController::class,'home'])->name('home');
+Route::get('/', [\App\Http\Controllers\Frontend\Home\HomeController::class,'home'])->name('home');

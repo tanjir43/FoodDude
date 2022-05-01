@@ -17,6 +17,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function () {
 
     //banner - section
     Route::resource('banner',\App\Http\Controllers\Admin\BannerController::class);
+    Route::post('banner_status',[\App\Http\Controllers\Admin\BannerController::class,'bannerStatus'])->name('banner.status');
 
 });
 Route::group(['prefix' => 'filemanager', 'middleware' => ['web']], function () {

@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\CreateNewBanner;
 use App\Http\Requests\Admin\UpdateBanner;
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class BannerController extends Controller
@@ -14,10 +15,19 @@ class BannerController extends Controller
 
     public function index()
     {
-        $banners = Banner::orderBy('id','desc')->get();
+        $banners = Banner::orderBy('id','desc')->limit(5)->get();
         return view('backend.admin.banner.manage',compact('banners'));
     }
 
+    public function bannerStatus(Request $request)
+    {
+        if ($request->mode == 'true') {
+            DB::table('banners')->where('id', $request->id)->update(['status' => 'active']);
+        } else {
+            DB::table('banners')->where('id', $request->id)->update(['status' => 'inactive']);
+        }
+        return response()->json(['msg' => 'Successfully updated status', 'status' => true]);
+    }
 
     public function create()
     {
@@ -86,7 +96,7 @@ class BannerController extends Controller
         if ($banner){
             $status = $banner->delete();
             if ($status){
-                return redirect()->route('banner.index')->with('success','Banner successfully deleted');
+                return redirect()->route('banner.index')->with('errors','Banner successfully deleted');
             }else{
                 return back('errors','Something went wrong');
             }

@@ -4,27 +4,27 @@
 
 <!-- carousel start -->
 <section class=" bg-dark">
+
     <div id="mainSlider" class="carousel slide" data-ride="carousel" data-interval="1000">
         <ol class="carousel-indicators">
             <li data-target="#mainSlider" data-slide-to="0" class="active"></li>
-            <li data-target="#mainSlider" data-slide-to="1"></li>
-            <li data-target="#mainSlider" data-slide-to="2"></li>
-            <li data-target="#mainSlider" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner ">
-            <div class="carousel-item active ">
-                <img src="img/1.jpg" class="w-100 h-400 opacity">
+            @foreach($banners as $key => $banner)
+            <div class="carousel-item  {{$key == 0 ? 'active' : '' }} " data-interval="3000">
+                <img src="{{$banner->image}}" class="w-100 h-400 opacity">
+                <div class="carousel-caption">
+                    <div class="carousel-title mb-4">
+                        <h4 class=""><strong>{{$banner->title}}</strong></h4>
+                    </div>
+                    <div class="carousel-body">
+                        <h6 class="" style="font-size: 12px">{!! \Illuminate\Support\Str::limit($banner->description,100,'...')!!}</h6>
+                    </div>
+                </div>
+            </div>
 
-            </div>
-            <div class="carousel-item">
-                <img src="img/2.jpg" class="w-100 h-400 opacity">
-            </div>
-            <div class="carousel-item">
-                <img src="img/3.jpg" class="w-100 h-400 opacity">
-            </div>
-            <div class="carousel-item">
-                <img src="img/office.jpg" class="w-100 h-400 opacity">
-            </div>
+            @endforeach
+
             <!--Carousel caption start-->
             <div class="carousel-caption search-caption">
                 <h2>Find Your Table For Any Occasion</h2>
