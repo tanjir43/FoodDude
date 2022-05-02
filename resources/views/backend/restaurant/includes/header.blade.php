@@ -1,8 +1,8 @@
 <!-- START HEADER-->
 <header class="header">
     <div class="page-brand">
-        <a class="link" href="">
-                    <span class="brand"><img src="{{asset('/')}}FoodDude/image/logo.png" alt=""></span>
+        <a class="link" href="{{route('home')}}">
+            <span class="brand"><img src="{{asset('/')}}FoodDude/image/logo.png" alt=""></span>
         </a>
     </div>
     <div class="flexbox flex-1">
@@ -136,7 +136,24 @@
                 </ul>
             </li>
             <li class="dropdown dropdown-user">
-               Hello
+                <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
+                    <img src="{{auth('restaurant')->user()->image}}" />
+                    @php
+                        $name = auth('restaurant')->user()->name;
+                        $fname= explode(' ',$name);
+                    @endphp
+                    <span></span>{{ucfirst($fname[0])}}<i class="fa fa-angle-down m-l-5"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{{route('restaurant.profile',[ 'id' => auth('restaurant')->user()->id])}}"><i class="fa fa-user"></i>Profile</a>
+
+                    <li class="dropdown-divider"></li>
+                    <a class="dropdown-item fa fa-power-off pr-1" href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </ul>
             </li>
         </ul>
         <!-- END TOP-RIGHT TOOLBAR-->

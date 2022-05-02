@@ -22,13 +22,16 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#summernote').summernote();
+        $('#summernote ,#summernote1 ,#summernote2').summernote();
     });
 </script>
 <!-- FILE MANAGER-->
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
     $('#lfm').filemanager('image');
+</script>
+<script>
+    $('#lfm1').filemanager('image1');
 </script>
 
 <!-- Alert Fade up-->
