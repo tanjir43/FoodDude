@@ -84,50 +84,30 @@
                             <div class="card card-body border-0">
 
                                 <div class="accordion" id="accordionId">
+
                                     <ul class="nav nav-pills">
+                                        @foreach($menus as $menu)
+
                                         <li class="dropdown ">
                                             <a class="dropdown-toggle nav-link text-dark" data-toggle="dropdown"
-                                               href="#">Lunch<span class="caret"></span></a>
+                                               href="#">{{$menu->period}}<span class="caret"></span></a>
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item">
+                                                    @foreach($menu->variation as $variation)
+
                                                     <a href="#seaFood" class="nav-link text-dark"
-                                                       data-toggle="collapse" data-target="#collapseTwo"
-                                                       data-toggle="pill">Sea Food</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#dessert" class="nav-link text-dark"
-                                                       data-toggle="collapse" data-target="#collapseThree"
-                                                       data-toggle="pill">Dessert</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#set-menu" class="nav-link text-dark"
-                                                       data-toggle="collapse" data-target="#collapseFour"
-                                                       data-toggle="pill">Set-menu</a>
-                                                </li>
+                                                       data-toggle="collapse"
+                                                       data-toggle="pill" >{{$variation->verity}}</a> </li>
+                                                    @endforeach
+
                                             </ul>
                                         </li>
-                                        <!--Dinner-->
-                                        <li class="dropdown ">
-                                            <a class="dropdown-toggle nav-link text-dark " data-toggle="dropdown"
-                                               href="#">Dinner<span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li class="dropdown-item">
-                                                    <a href="#regularItem" class="nav-link text-dark"
-                                                       data-toggle="collapse" data-target="#collapseFive"
-                                                       data-toggle="pill">Regular Item</a>
-                                                </li>
-                                                <li class="dropdown-item">
-                                                    <a href="#common" class="nav-link text-dark"
-                                                       data-toggle="collapse" data-target="#collapseSix"
-                                                       data-toggle="pill">Common</a>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        @endforeach
+
+
                                     </ul>
                                     <hr>
                                     <div class="tab-content">
-
-
 
                                         <div class="collapse  show" id="collapseTwo" data-parent="#accordionId">
 
@@ -162,6 +142,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="collapse " id="collapseThree" data-parent="#accordionId">
 
                                             <div class="tab-pane " id="dessert">
@@ -207,6 +188,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="collapse " id="collapseFive" data-parent="#accordionId">
 
                                             <div class="tab-pane " id="regularItem">
@@ -230,6 +212,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="collapse " id="collapseSix" data-parent="#accordionId">
 
                                             <div class="tab-pane " id="common">
@@ -252,8 +235,10 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
@@ -607,9 +592,7 @@
                                             class="text-danger bg-transparent border-0">- Show less</button>
 
                                     <div class="collapse" id="hideifoRest" data-parent="#accordionId">
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>

@@ -11,11 +11,13 @@ class HomeController extends Controller
 {
     public function home(){
         $banners     = Banner::where(['status'=>'active','condition'=>'banner'])->get();
-        $restaurants = Restaurant::where(['status'=>'active'])->get();
+        $restaurants = Restaurant::where(['status'=>'active'])->limit(4)->get();
         return view('frontend.home.home',compact(['banners','restaurants']));
     }
     public function restaurantOwn($id){
+        $menus      = Restaurant\Menu::all();
+
         $restaurant = Restaurant::find($id);
-       return view('frontend.home.restaurant_own',compact(['restaurant']));
+       return view('frontend.home.restaurant_own',compact(['restaurant','menus',]));
     }
 }

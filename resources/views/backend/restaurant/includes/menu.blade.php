@@ -30,6 +30,29 @@
                     </li>
                 </ul>
             </li>
+
+
+            <li>
+                <a href="javascript:;"><i class="sidebar-item-icon fa fa-bars"></i>
+                    <span class="nav-label">Menu items</span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse">
+
+                    <li>
+                        <a href="{{route('menu.index')}}">Manage Menu </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="javascript:;"><i class="sidebar-item-icon fa fa-frown-o"></i>
+                    <span class="nav-label"> Food Verities items</span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse">
+
+                    <li>
+                        <a href="{{route('verity.index')}}">Manage verities </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

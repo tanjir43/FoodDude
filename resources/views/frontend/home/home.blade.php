@@ -377,12 +377,7 @@
                             <p class="font-size-13 font-weight-bold">Booked 26 times today</p>
                         </div>
                     </div>
-
-
-
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -408,12 +403,12 @@
     <div class="container">
         <div class="row">
                 @foreach($restaurants as $restaurant)
-                        <div class="card border-primary  h-338">
+                        <div class="card border-primary mr-3 h-338" style="width: 267px !important;">
                             <img src="{{$restaurant->image}}" style="width: 265px !important; cursor: pointer"
                                  onclick="window.location='{{route('restaurant.own',$restaurant)}}';" class="card-img-top h-200" alt="">
                             <div class="card-body card-color">
                                 <h6 class="card-title font-weight-bold">{{$restaurant->name}}</h6>
-                                <p class="card-text font-size-13 mb-0 ">{{$restaurant->map_address}}</p>
+                                <p class="card-text font-size-13 mb-0 ">{{ \Illuminate\Support\Str::limit($restaurant->map_address,50,'...')}}</p>
                                 <span class="font-size-13 mt-M ">
 
                                         <svg height="15px" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
@@ -482,7 +477,7 @@
             <div class="col-md-3 col-sm-6 col-lg-3 big-footer-height">
                 <img src="./img/1.jpg" class="h-130 w-100 mt-4 opacity " alt="">
                 <div class="carousel-caption ">
-                    <h4>DHANMADI</h4>
+                    <h4>DHANMONDI</h4>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-lg-3 big-footer-height">

@@ -49,7 +49,7 @@
             <button class="btn btn-info btn-block" type="submit">Login</button>
         </div>
         <div class="text-center">Not a member?
-            <a class="color-white" href="register.html">Create account</a>
+            <a class="color-white" href="{{route('register.form')}}">Create account</a>
         </div>
     </form>
 </div>

@@ -19,13 +19,13 @@ class CreateRestaurantsTable extends Migration
             $table->string('slug')->unique();
             $table->mediumText('slogan');
             $table->string('mobile');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->longText('description')->nullable();
 
 
-            $table->string('owner');
+            $table->string('owner')->nullable();
             $table->text('ownerImage')->nullable();
             $table->string('established_at')->nullable();
             $table->string('region')->default('international');
