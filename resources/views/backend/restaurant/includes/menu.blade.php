@@ -53,6 +53,29 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="javascript:;"><i class="sidebar-item-icon fa fa-sellsy"></i>
+                    <span class="nav-label"> Food  items</span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse">
+
+                    <li>
+                        <a href="{{route('food.index')}}">Manage foods </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li>
+                <a href="javascript:;"><i class="sidebar-item-icon fa fa-image"></i>
+                    <span class="nav-label">Photos</span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse">
+
+                    <li>
+                        <a href="{{route('photo.index')}}">Manage Photos </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

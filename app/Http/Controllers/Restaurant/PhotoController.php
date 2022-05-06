@@ -3,28 +3,28 @@
 namespace App\Http\Controllers\Restaurant;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Restaurant\Menu\CreateMenuRequest;
+use App\Models\Photo;
 use App\Models\Restaurant;
-use App\Models\Restaurant\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MenuController extends Controller
+class PhotoController extends Controller
 {
+
 
     public function index()
     {
         $restaurant = auth('restaurant')->user()->id;
-        $menus      = Restaurant\Menu::where('restaurant_id',$restaurant)->get();
-        return view('backend.restaurant.menu.index',compact('menus'));
+        $photos      = Photo::where('restaurant_id',$restaurant)->get();
+        return view('backend.restaurant.photo.index',compact('photos'));
     }
 
-    public function menuStatus(Request $request)
+    public function photoStatus(Request $request)
     {
         if ($request->mode == 'true') {
-            DB::table('menus')->where('id', $request->id)->update(['status' => 'active']);
+            DB::table('photos')->where('id', $request->id)->update(['status' => 'active']);
         } else {
-            DB::table('menus')->where('id', $request->id)->update(['status' => 'inactive']);
+            DB::table('photos')->where('id', $request->id)->update(['status' => 'inactive']);
         }
         return response()->json(['msg' => 'Successfully updated status', 'status' => true]);
     }
@@ -32,15 +32,15 @@ class MenuController extends Controller
     public function create()
     {
         $restaurants = Restaurant::where('status','active')->get();
-        return view('backend.restaurant.menu.create',compact('restaurants'));
+        return view('backend.restaurant.photo.create',compact('restaurants'));
     }
 
-    public function store(CreateMenuRequest $request)
+    public function store(Request $request)
     {
         $data       = $request->all();
-        $status = Menu::create($data);
+        $status = Photo::create($data);
         if ($status){
-            return redirect()->route('menu.index')->with('success','Menu created successfully');
+            return redirect()->route('photo.index')->with('success','Photo created successfully');
         }
         else{
             return back()->with('errors','Something went wrong');
@@ -48,26 +48,26 @@ class MenuController extends Controller
     }
 
 
-    public function show(Menu $menu)
+    public function show(Photo $menu)
     {
         //
     }
 
     public function edit($id)
     {
-        $menu = Menu::find($id);
-        return view('backend.restaurant.menu.edit',compact('menu'));
+        $photo = Photo::find($id);
+        return view('backend.restaurant.photo.edit',compact('photo'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $menu = Menu::find($id);
-        if ($menu){
+        $photo = Photo::find($id);
+        if ($photo){
             $data       = $request->all();
-            $status = $menu->fill($data)->save();
+            $status = $photo->fill($data)->save();
             if ($status){
-                return redirect()->route('menu.index')->with('success','Menu has been updated successfully');
+                return redirect()->route('photo.index')->with('success','Photo has been updated successfully');
             }
             else{
                 return back()->with('errors','Something went wrong');
@@ -80,11 +80,11 @@ class MenuController extends Controller
 
     public function destroy($id)
     {
-        $menu = Menu::find($id);
-        if ($menu){
-            $status = $menu->delete();
+        $photo = Photo::find($id);
+        if ($photo){
+            $status = $photo->delete();
             if ($status){
-                return redirect()->route('menu.index')->with('errors','Menu successfully deleted');
+                return redirect()->route('photo.index')->with('errors','Photo successfully deleted');
             }else{
                 return back('errors','Something went wrong');
             }

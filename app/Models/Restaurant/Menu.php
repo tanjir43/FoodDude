@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
-    protected  $fillable = ['period','status'];
+    protected  $fillable = ['restaurant_id','period','status'];
 
     public function restaurant(){
         return $this->belongsTo(Restaurant::class);

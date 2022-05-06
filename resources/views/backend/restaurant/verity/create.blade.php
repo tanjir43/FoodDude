@@ -19,7 +19,17 @@
 
             <form class="form-horizontal" action="{{route('verity.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-
+                <div class="form-group row" hidden>
+                    <label class="col-sm-2 col-form-label">Restaurant name <span class=text-danger>*</span></label>
+                    <div class="col-sm-10">
+                        <input name="restaurant_id"   class="form-control @error('restaurant_id') is-invalid @enderror"  placeholder="Period" value="{{auth('restaurant')->user()->id}}"></input>
+                        @error('restaurant_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"> Period name <span class=text-danger>*</span></label>
                     <div class="col-sm-10">

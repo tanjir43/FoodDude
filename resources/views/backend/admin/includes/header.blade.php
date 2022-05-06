@@ -146,9 +146,9 @@
                 <ul class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="{{route('admin.profile',[ 'id' => auth('admin')->user()->id])}}"><i class="fa fa-user"></i>Profile</a>
                  @php
-                        $current_user = auth('admin')->user();
+                        $current_user = auth('admin')->user()->role;
                     @endphp
-                    @if($current_user->role=='admin')
+                    @if($current_user =='admin')
                         <a href="{{route('admin.add_role')}}" class="text-danger dropdown-item"><i class="fa fa-user-plus"></i> Add role</a>
                     @endif
                     <li class="dropdown-divider"></li>

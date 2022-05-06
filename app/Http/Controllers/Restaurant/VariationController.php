@@ -7,20 +7,24 @@ use App\Http\Requests\Restaurant\Menu\CreateVariationRequest;
 use App\Models\Restaurant\Menu;
 use App\Models\Restaurant\Variation;
 use Illuminate\Http\Request;
-use function GuzzleHttp\Promise\all;
-
 class VariationController extends Controller
 {
 
     public function index()
     {
-        $verities = Variation::orderBy('id','desc')->get();
+        $restaurant = auth('restaurant')->user()->id;
+
+        $verities =Variation::where('restaurant_id',$restaurant)->get();
+
         return view('backend.restaurant.verity.index',compact('verities'));
     }
 
     public function create()
     {
-        $menus = Menu::all();
+        $restaurant = auth('restaurant')->user()->id;
+
+        $menus      = Menu::where('restaurant_id',$restaurant)->get();
+
         return view('backend.restaurant.verity.create',compact('menus'));
     }
 
@@ -46,8 +50,9 @@ class VariationController extends Controller
 
     public function edit($id)
     {
-        $menus = Menu::all();
+        $restaurant = auth('restaurant')->user()->id;
 
+        $menus      = Menu::where('restaurant_id',$restaurant)->get();
         $verity= Variation::find($id);
         return view('backend.restaurant.verity.edit',compact(['verity','menus']));
     }

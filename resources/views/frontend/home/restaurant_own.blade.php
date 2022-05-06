@@ -94,153 +94,112 @@
                                             <ul class="dropdown-menu">
                                                 <li class="dropdown-item">
                                                     @foreach($menu->variation as $variation)
-
-                                                    <a href="#seaFood" class="nav-link text-dark"
+                                                    <a href="#seaFood" class="nav-link text-dark" style="background-color: transparent; text-align: center;"
                                                        data-toggle="collapse"
                                                        data-toggle="pill" >{{$variation->verity}}</a> </li>
+
+                                                 <div class="tab-content">
+                                                    @foreach($variation->food as $food)
+
+                                                         <div class="collapse  show" id="collapseTwo" data-parent="#accordionId">
+
+                                                            <div class="tab-pane " id="seaFood">
+                                                                <h6 class=" font-weight-bold"> </h6>
+                                                                <div class="row mh-100">
+                                                                    <div class="col-md-12 pl-4">
+
+                                                                        <span href="" data-toggle="modal"   class="text-danger font-size-13  bg-transparent  " style= "width: 100px !important;" >
+                                                                            {{$food->name}}
+                                                                        </span>
+                                                                        <br>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
                                                     @endforeach
-
-                                            </ul>
-                                        </li>
+                                                </div>
+                                                    @endforeach
+                                             </ul>
+                                         </li>
                                         @endforeach
-
 
                                     </ul>
                                     <hr>
-                                    <div class="tab-content">
 
+
+                                    <div class="tab-content">
+                                        <h6 class=" font-weight-bold">All Foods </h6>
+                                        @foreach($foods as $food)
                                         <div class="collapse  show" id="collapseTwo" data-parent="#accordionId">
 
                                             <div class="tab-pane " id="seaFood">
-                                                <h6 class=" font-weight-bold">Sea Food</h6>
-                                                <div class="row mh-100">
-                                                    <div class="col-md-6">
 
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#any-Name"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Tuna
-                                                            Fish</button>
+                                                <div class="row mh-100">
+                                                    <div class="col-md-12">
+
+                                                        <a href="" data-toggle="modal" data-target="#foodId{{$food->id}}"  class="text-danger font-size-13  bg-transparent  " style= "width: 100px !important;" >
+                                                            {{$food->name}}
+                                                        </a>
                                                         <br>
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#any-Name"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Hilsha
-                                                        </button>
                                                     </div>
-                                                    <div class="col-md-6">
 
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#anyName2"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Roe
-                                                            Fish</button>
-                                                        <br>
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#anyName2"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Katla
-                                                            Fish
-                                                        </button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="foodId{{$food->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        @php
+                                                            $food = \App\Models\Restaurant\Food::where('id',$food->id)->first();
+                                                        @endphp
 
-                                        <div class="collapse " id="collapseThree" data-parent="#accordionId">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">{{$food->name}}</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img src="{{asset($food->image)}}" width="100%" alt="">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <strong>Period :  </strong>
+                                                                <p>{{\App\Models\Restaurant\Menu::where('id',$food->menu_id)->value('period')}} </p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <strong>Verity  :  </strong>
+                                                                <p>{{\App\Models\Restaurant\Variation::where('id',$food->verity_id)->value('verity')}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <strong>Period :  </strong>
+                                                                <p>{!! $food->description!!}</p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <strong>Nutrition  :  </strong>
+                                                                <p>{{$food->nutrition}} KCL</p>
+                                                            </div>
+                                                        </div>
 
-                                            <div class="tab-pane " id="dessert">
-                                                <h6 class=" font-weight-bold">Dessert</h6>
-                                                <div class="row mh-100">
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#any-Name"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Tuna
-                                                            Fish</button>
-                                                    </div>
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#anyName2"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Roe
-                                                            Fish</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="collapse " id="collapseFour" data-parent="#accordionId">
-
-                                            <div class="tab-pane " id="Set-menu">
-                                                <h6 class=" font-weight-bold">Set-Menu</h6>
-                                                <div class="row mh-100">
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#any-Name"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Tuna
-                                                            Fish</button>
-                                                    </div>
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#anyName2"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Roe
-                                                            Fish</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="collapse " id="collapseFive" data-parent="#accordionId">
-
-                                            <div class="tab-pane " id="regularItem">
-                                                <h6 class=" font-weight-bold">Regular Item</h6>
-                                                <div class="row mh-100">
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#any-Name"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Burger
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#anyName2"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Hot
-                                                            Dog
-                                                        </button>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="collapse " id="collapseSix" data-parent="#accordionId">
-
-                                            <div class="tab-pane " id="common">
-                                                <h6 class=" font-weight-bold">Common Item</h6>
-                                                <div class="row mh-100">
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#any-Name"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Pizza
-                                                        </button>
-                                                    </div>
-                                                    <div class="col-md-6">
-
-                                                        <button type="button" data-toggle="modal"
-                                                                data-target="#anyName2"
-                                                                class="text-danger font-size-13 pl-2 bg-transparent border-0">Pasta
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        @endforeach
                                     </div>
                                 </div>
 
                             </div>
                         </div>
+
 
 
                         <!--Menu review  start-->
@@ -434,34 +393,57 @@
                             </div>
                         </div>
 
-
-
                         <!--Reviews end-->
                         <div class="tab-pane fade" id="food">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card-columns pt-3">
-                                        <div class="card">
-                                            <img src="img/food/steak.JPG" data-toggle="modal"
-                                                 data-target="#modalStickHand" class="card-img-top" alt="">
+                                @if($foodphotos == !null)
+                                        <div class="col-md-12">
+                                            <div class="card-columns pt-3">
+                                                @foreach($foodphotos as $food )
+                                                <div class="card">
+                                                    <img src="{{asset($food->image)}}"  height="147px !important" style="width: 160px !important;" data-toggle="modal"
+                                                         data-target="#modalStickHand" class="card-img-top ml-2" alt="">
+                                                </div>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                        <div class="card">
-                                            <img src="img/food/pain-de-campagne.webp" data-toggle="modal"
-                                                 data-target="#modalRustic" class="card-img-top " alt="">
-                                        </div>
-                                        <div class="card">
-                                            <img src="img/1.jpg" data-toggle="modal" data-target="#myModal3"
-                                                 class="card-img-top " alt="">
-                                        </div>
+                                @else
+                                    <div class="card ml-3">
+                                        <img src="{{asset('/')}}FoodDude/image/noFood.png"  height="147px " style="width: 160px !important;"
+                                             class="card-img-top " alt="">
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="tab-pane fade" id="interior">
+                            @foreach($interiorPhotos as $photo)
+                            <div class="col-md-12">
+                                <div class="card-columns pt-3">
+                                    <div class="card">
+                                        <img src="{{asset($photo->images)}}"  height="147px !important" style="width: 100% !important;"
+                                             class="card-img-top ml-2" alt="">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="interior">
-                            Hello Interior
+                            @endforeach
                         </div>
                         <div class="tab-pane fade" id="exterior">
-                            Hello Exterior
+
+                                <div class="col-md-12">
+
+                                    <div class="card-columns pt-3">
+                                        @foreach($exteriorPhotos as $photo)
+                                        <div class="card ">
+                                            <img src="{{asset($photo->images)}}"  height="147px !important" style="width:160px !important;"
+                                                 class="card-img-top ml-2" alt="">
+                                        </div>
+                                        @endforeach
+                                    </div>
+
+                                </div>
+
                         </div>
 
                     </div>
@@ -535,7 +517,7 @@
 
                         <div class="card  padding-0 mt-2">
                             <div class="padding-0 w-100">
-                                {!! $restaurant->map_link !!}
+                                <p>{!! $restaurant->map_link !!}</p>
 
                                 <p class="card-text pt-2 pl-2 pb-1"> <i class="fas fa-map-marker-alt fa-2x"></i><a
                                         href="https://goo.gl/maps/vvAyhdpU2HhGW8zf7" class="text-dark pl-2 font-size-15">{!! $restaurant->map_address !!} </a>
@@ -544,8 +526,8 @@
 
 
                         <div class="hotel-information nunito font-size-13">
-                            <h6 class="font-weight-bold pt-4"><i class="fas fa-hotel pr-2 "></i>{{$restaurant->neighborhood}}</h6>
-                            <p>Dhaka</p>
+                            <h6 class="font-weight-bold pt-4"><i class="fas fa-hotel pr-2 "></i>Neighborhood</h6>
+                            <p>{{$restaurant->neighborhood}}</p>
 
                            <h6 class="font-weight-bold pt-2"><i class="fas fa-clock pr-2"></i>Hours of operation
                             </h6>

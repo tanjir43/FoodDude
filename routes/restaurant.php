@@ -25,5 +25,14 @@ Route::group(['prefix'=>'restaurant','middleware'=>'restaurant'],function () {
     Route::resource('/verity',\App\Http\Controllers\Restaurant\VariationController::class);
     Route::post('verity_status',[\App\Http\Controllers\Restaurant\VariationController::class,'verityStatus'])->name('verity.status');
 
+    //Food section
+    Route::resource('/food',\App\Http\Controllers\Restaurant\FoodController::class);
+//    Route::get('/food.all/',[\App\Http\Controllers\Restaurant\FoodController::class,'foodAll'])->name('food.all');
+    Route::post('food_status',[\App\Http\Controllers\Restaurant\FoodController::class,'foodStatus'])->name('food.status');
+
+    //Photo section
+    Route::resource('/photo',\App\Http\Controllers\Restaurant\PhotoController::class);
+    Route::post('photo_status',[\App\Http\Controllers\Restaurant\PhotoController::class,'photoStatus'])->name('photo.status');
+
 });
 
