@@ -26,6 +26,8 @@ class CreateRestaurantsTable extends Migration
 
 
             $table->string('owner')->nullable();
+            $table->text('dimension_view')->nullable();
+
             $table->text('ownerImage')->nullable();
             $table->string('established_at')->nullable();
             $table->string('region')->default('international');

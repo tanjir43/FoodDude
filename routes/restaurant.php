@@ -34,5 +34,15 @@ Route::group(['prefix'=>'restaurant','middleware'=>'restaurant'],function () {
     Route::resource('/photo',\App\Http\Controllers\Restaurant\PhotoController::class);
     Route::post('photo_status',[\App\Http\Controllers\Restaurant\PhotoController::class,'photoStatus'])->name('photo.status');
 
+    //Hour section
+    Route::resource('/hour',\App\Http\Controllers\Restaurant\HourController::class);
+    Route::post('hour_status',[\App\Http\Controllers\Restaurant\HourController::class,'hourStatus'])->name('hour.status');
+
+     //Table section
+    Route::resource('/table',\App\Http\Controllers\Restaurant\TableController::class);
+    Route::post('table_status',[\App\Http\Controllers\Restaurant\TableController::class,'tableStatus'])->name('table.status');
+
+
+
 });
 

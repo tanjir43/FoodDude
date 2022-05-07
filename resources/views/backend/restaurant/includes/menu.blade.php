@@ -76,6 +76,20 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href="javascript:;"><i class="sidebar-item-icon fa fa-clock-o"></i>
+                    <span class="nav-label">Reservation section</span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse">
+
+                    <li>
+                        <a href="{{route('hour.index')}}">Manage Hours </a>
+                        <a href="{{route('table.index')}}">Manage Tables </a>
+                    </li>
+                </ul>
+            </li>
+
+
         </ul>
     </div>
 </nav>

@@ -396,7 +396,8 @@
                         <!--Reviews end-->
                         <div class="tab-pane fade" id="food">
                             <div class="row">
-                                @if($foodphotos == !null)
+{{--                                @if($foodphotos)--}}
+                                @if (!File::exists($foodphotos))
                                         <div class="col-md-12">
                                             <div class="card-columns pt-3">
                                                 @foreach($foodphotos as $food )
@@ -418,6 +419,7 @@
 
 
                         <div class="tab-pane fade" id="interior">
+                            @if (!File::exists($foodphotos))
                             @foreach($interiorPhotos as $photo)
                             <div class="col-md-12">
                                 <div class="card-columns pt-3">
@@ -428,24 +430,34 @@
                                 </div>
                             </div>
                             @endforeach
+                            @else
+                                <div class="card ml-3">
+                                    <img src="{{asset('/')}}FoodDude/image/noFood.png"  height="147px " style="width: 160px !important;"
+                                         class="card-img-top " alt="">
+                                </div>
+                            @endif
                         </div>
                         <div class="tab-pane fade" id="exterior">
 
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="margin: 0 !important; padding: 0 !important;">
 
-                                    <div class="card-columns pt-3">
+                                    <div class="card-columns pt-3" style="margin: 0 !important; padding: 0 !important;">
+                                        @if (!File::exists($foodphotos))
                                         @foreach($exteriorPhotos as $photo)
-                                        <div class="card ">
+                                        <div class="card d-flex" style="width: 161px !important;">
                                             <img src="{{asset($photo->images)}}"  height="147px !important" style="width:160px !important;"
-                                                 class="card-img-top ml-2" alt="">
+                                                 class="card-img-top" alt="">
                                         </div>
                                         @endforeach
+                                        @else
+                                            <div class="card ml-3">
+                                                <img src="{{asset('/')}}FoodDude/image/noFood.png"  height="147px " style="width: 160px !important;"
+                                                     class="card-img-top " alt="">
+                                            </div>
+                                        @endif
                                     </div>
-
                                 </div>
-
-                        </div>
-
+                          </div>
                     </div>
                 </div>
             </div>
