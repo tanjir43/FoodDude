@@ -8,7 +8,7 @@
     <div class="ibox">
         <div class="ibox-head">
             <div class="ibox-title "><a href="{{route('table.create')}}" class="text-success"><i class="fa fa-plus-circle"></i> Add new table</a></div>
-            <div class="ibox-title mx-auto text-black-50">Manage hours</div>
+            <div class="ibox-title mx-auto text-black-50">Manage Tables</div>
             <div class="ibox-title mx-right text-primary ">Total Tables : {{\App\Models\Restaurant\Table::count()}} </div>
             <div class="ibox-tools">
                 <a class="ibox-collapse"><i class="fa fa-minus"></i></a>

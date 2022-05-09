@@ -62,7 +62,10 @@ class UserTableSeeder extends Seeder
                 'email'       => 'restaurant@gmail.com',
                 'owner'       => 'Tanjir',
                 'password'    => Hash::make('56789'),
+                'booking_price'=> 100,
                 'status'      => 'active',
+                'map_address' => "Aroyee House 11KA Dhaka,Road 11, BariDhara Diplomatic Zone Dhaka , Dhaka 1212",
+                'hours_of_operation'  => "Monday-Thursday : 6pm: 11pm Sunday: 12pm-11pm Friday:11am-11pm ",
             ],
         ]);
     }

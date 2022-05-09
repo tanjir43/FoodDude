@@ -27,4 +27,5 @@ class HomeController extends Controller
        return view('frontend.home.restaurant_own',compact(['restaurant','menus','foods','foodphotos','interiorPhotos','exteriorPhotos']));
     }
 
+
 }

@@ -30,7 +30,7 @@
                 @forelse($hours as $hour)
                     <tr class="text-center">
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$hour->hour}}</td>
+                        <td> {{$hour->hour}}</td>
                         <td class="pl-5" >
                             <input type="checkbox" name="toggle" value="{{$hour->id}}" {{$hour->status == 'active' ? 'checked' : ''}} data-toggle="toggle" data-on="active" data-off="Inactive" data-onstyle="success" data-offstyle="danger" data-size="sm">
                         </td>

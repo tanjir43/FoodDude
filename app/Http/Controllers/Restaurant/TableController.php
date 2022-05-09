@@ -71,26 +71,15 @@ class TableController extends Controller
 
 
 
-    public function update(Request $request, $id)
+    public function update(EditTableRequest $request, $id)
     {
         $table = Table::find($id);
-        if ($table){
-            $this->validate($request,[
-                'name'      => 'required|string|exists:tables','id',
-                'priority'  => 'required|numeric|exists:tables','id',
-                'image'     => 'max:3000',
-                'hour'      => 'required|min:1',
-                'status'    => 'required|min:1',
-            ]);
             $data       = $request->all();
             $status = $table->fill($data)->save();
             if ($status){
                 return redirect()->route('table.index')->with('success','Table updated successfully');
             }
-            else{
-                return back()->with('errors','Something went wrong');
-            }
-        }else{
+        else{
             return back()->with('errors','Data not found');
         }
     }

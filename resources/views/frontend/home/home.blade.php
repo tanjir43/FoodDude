@@ -1,5 +1,19 @@
 @extends('frontend.master')
 
+@section('style')
+    <link href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <style>
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+@endsection
 @section('body')
 
 <!-- carousel start -->
@@ -29,49 +43,22 @@
             <div class="carousel-caption search-caption">
                 <h2>Find Your Table For Any Occasion</h2>
                 <div class="row">
-                    <div class="searching-functionality  ">
+                    <div class="searching-functionality">
                         <div class="col-md">
-                            <form action="" method="" class="search-form font-size-13 ">
-                                <input type="date" class="custom-select col-25  font-size-13">
+                            <form action="{{route('restaurant.search')}}" method="GET" class="search-form font-size-13 ">
+                                <input name="date" type="text" id="date_picker"  value="{{\Illuminate\Support\Carbon::now()->format('Y-m-d')}}" class="custom-select col-25  font-size-13">
 
-                                <select class="custom-select col-25  font-size-13">
-                                    <option value="GuestOne">Guest 1</option>
-                                    <option value="GuestTwo">Guests 2</option>
-                                    <option value="GuestThree">Guests 3</option>
-                                    <option value="GuestFour">Guests 4</option>
-                                    <option value="GuestFive">Guests 5</option>
+                                <input type="number"oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="select-table col-25  font-size-13" placeholder="   Guest no" style="height: 33px ;" name="guest" value="{{old('guest')}}">
+
+                                <input type="time" class="select-table col-25  font-size-13 "    name="time" value="{{old('time')}}" style="height: 33px ;">
+
+                                <select class="select-table col-25  font-size-13" style="height: 33px ;" name="type">
+                                    <option value="all {{old('type' == 'all' ?  'selected' : '')}}">All</option>
+                                    <option value="guest {{old('type' == 'guest' ? 'selected' : '')}}">Guest room</option>
                                 </select>
-                                <select class="custom-select col-25  font-size-13">
-                                    <option value="12:00PM">12:00 PM</option>
-                                    <option value="12:00PM">12:30 PM</option>
-                                    <option value="12:00PM">1:00 PM</option>
-                                    <option value="12:00PM">1:30 PM</option>
-                                    <option value="12:00PM">2:00 PM</option>
-                                    <option value="12:00PM">2:30 PM</option>
-                                    <option value="12:00PM">3:00 PM</option>
-                                    <option value="12:00PM">3:30 PM</option>
-                                    <option value="12:00PM">4:00 PM</option>
-                                    <option value="12:00PM">4:30 PM</option>
-                                    <option value="12:00PM">5:00 PM</option>
-                                    <option value="12:00PM">5:30 PM</option>
-                                    <option value="12:00PM">6:00 PM</option>
-                                    <option value="12:00PM">6:30 PM</option>
-                                    <option value="12:00PM">7:00 PM</option>
-                                    <option value="12:00PM">7:30 PM</option>
-                                    <option value="12:00PM">8:00 PM</option>
-                                    <option value="12:00PM">8:30 PM</option>
-                                    <option value="12:00PM">9:00 PM</option>
-                                    <option value="12:00PM">9:30 PM</option>
-                                    <option value="12:00PM">10:00 PM</option>
-                                    <option value="12:00PM">10:30 PM</option>
-                                    <option value="12:00PM">11:00 PM</option>
-                                </select>
-                                <select class="select-table col-25  font-size-13">
-                                    <option value="all">all</option>
-                                    <option value="personal">personal</option>
-                                </select>
-                                <input type="text" class=" search-location" placeholder="Location,Restaurant">
-                                <a href="searchrest.html"><button type="button"  class="btn bg-dark text-light ml-2 font-size-13">Search</button></a>
+                                <input type="text" name="location" class="search-location" placeholder="Location,Restaurant">
+
+                               <button type="submit"  class="btn bg-dark text-light ml-2 font-size-13">Search</button>
                             </form>
                         </div>
                     </div>
@@ -521,4 +508,16 @@
     </div>
 </section>
 
+@endsection
+
+@section('script')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#date_picker").datepicker({
+                minDate: 0
+            });
+        });
+    </script
 @endsection

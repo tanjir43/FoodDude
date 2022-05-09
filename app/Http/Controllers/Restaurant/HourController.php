@@ -16,16 +16,16 @@ class HourController extends Controller
     public function index()
     {
         $restaurant = auth('restaurant')->user()->id;
-        $hours = Hour::where('restaurant_id',$restaurant)->where('status','active')->get();
+        $hours = Hour::where('restaurant_id',$restaurant)->get();
         return view('backend.restaurant.reservation.hour.index',compact('hours'));
     }
 
     public function hourStatus(Request $request)
     {
         if ($request->mode == 'true') {
-            DB::table('banners')->where('id', $request->id)->update(['status' => 'active']);
+            DB::table('hours')->where('id', $request->id)->update(['status' => 'active']);
         } else {
-            DB::table('banners')->where('id', $request->id)->update(['status' => 'inactive']);
+            DB::table('hours')->where('id', $request->id)->update(['status' => 'inactive']);
         }
         return response()->json(['msg' => 'Successfully updated status', 'status' => true]);
     }

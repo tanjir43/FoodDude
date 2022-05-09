@@ -25,8 +25,8 @@ class EditTableRequest extends FormRequest
     {
         $id = $this->route('edit');
         return [
-            'name'      => 'required|string|unique:tables'. $id ,
-            'priority'  => 'required|numeric|unique:tables',
+            'name'      => 'required|string|exists:tables'. $id ,
+            'priority'  => 'required|numeric|exists:tables'.$id,
             'image'     => 'max:3000',
             'hour'      => 'required|min:1',
             'status'    => 'required|min:1',

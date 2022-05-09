@@ -103,12 +103,17 @@
 
                                 <div class="form-group">
                                     <label class="text-danger">Password</label>
-                                    <input class="form-control text-danger" type="password" name="password"  placeholder="Password" >
+                                    <input class="form-control text-danger" type="password" name="password" required  placeholder="Password" >
                                 </div>
 
                                 <div class="form-group">
                                     <label>Mobile</label>
                                     <input class="form-control" type="number" placeholder="mobile" name="mobile" value="{{auth('restaurant')->user()->mobile}}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Booking price</label>
+                                    <input class="form-control" type="number" placeholder="mobile" name="mobile" value="{{auth('restaurant')->user()->booking_price}}">
                                 </div>
 
                                 <div class="form-group">

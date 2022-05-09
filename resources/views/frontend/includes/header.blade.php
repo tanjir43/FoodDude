@@ -12,7 +12,7 @@
                     <li><a href="" class="nav-link col-mt-8 ">ABOUT</a></li>
                     <li><a href="" class="nav-link col-mt-8 ">ABOUT</a></li>
                     <li><a href="" class="nav-link col-mt-8 ">ABOUT</a></li>
-                    <li><a href="" class="nav-link col-mt-8 ">ABOUT</a></li>
+                    <li><a href="{{route('restaurant.all')}}" class="nav-link col-mt-8 " title="Restaurants"><i class="fas fa-utensils"></i></a></li>
                     <li><a href="" class="nav-link btn btn-secondary">SIGN IN</a></li>
                     <li><a href="" class="nav-link btn btn-secondary col-mt-8">SIGN UP</a></li>
                 </ul>
