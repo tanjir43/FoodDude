@@ -42,6 +42,10 @@ Route::group(['prefix'=>'restaurant','middleware'=>'restaurant'],function () {
     Route::resource('/table',\App\Http\Controllers\Restaurant\TableController::class);
     Route::post('table_status',[\App\Http\Controllers\Restaurant\TableController::class,'tableStatus'])->name('table.status');
 
+  //Date section
+    Route::resource('/date',\App\Http\Controllers\Restaurant\DateController::class);
+    Route::post('date_status',[\App\Http\Controllers\Restaurant\DateController::class,'dateStatus'])->name('date.status');
+
 
 
 });

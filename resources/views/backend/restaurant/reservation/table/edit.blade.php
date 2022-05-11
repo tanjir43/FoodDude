@@ -42,6 +42,40 @@
                         </div>
 
                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label"> Date</label>
+                            <div class="col-sm-10">
+                                <select name="date_id" class="form-control @error('date_id') is-invalid @enderror" >
+                                    @foreach($dates as $date)
+                                        <option value="{{$date->id}}" {{$date->id == $table->date_id ? 'selected' : ''}}>{{$date->date}}</option>
+                                    @endforeach
+                                </select>
+                                @error('date_id')
+                                <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label"> Hour</label>
+                            <div class="col-sm-10">
+                                <select name="hour_id" class="form-control @error('hour_id') is-invalid @enderror" >
+                                    @foreach($hours as $hour)
+                                        <option value="{{$hour->id}}"{{$hour->id == $table->hour_id ? 'selected' : ''}}>{{$hour->hour}}</option>
+                                    @endforeach
+                                </select>
+                                @error('hour_id')
+                                <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label"> Priority <small>(ex:1)</small></label>
                             <div class="col-sm-10">
                                 <input name="priority" type="text"  class="form-control @error('priority') is-invalid @enderror" placeholder="Priority" value="{{$table->priority}}">
@@ -72,18 +106,6 @@
                                     @enderror
                                 </div>
                                 <div id="holder" style="margin-top:15px;max-height:100px;"><img src="{{asset($table->image)}}" width="100" alt=""> </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label"> Hour</label>
-                            <div class="col-sm-10">
-                                <input name="hour" type="time"  class="form-control @error('hour') is-invalid @enderror" placeholder="Hour" value="{{$table->hour}}">
-                                @error('hour')
-                                <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                                @enderror
                             </div>
                         </div>
 

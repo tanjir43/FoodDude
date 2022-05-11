@@ -10,3 +10,8 @@ Route::get('/restaurant_search',[\App\Http\Controllers\Frontend\SearchRestaurant
 Route::get('/restaurant-all',[\App\Http\Controllers\Frontend\Restaurant\AllRestaurantController::class,'restaurantAll'])->name('restaurant.all');
 Route::post('/restaurant-filter',[\App\Http\Controllers\Frontend\Restaurant\AllRestaurantController::class,'restaurantFilter'])->name('restaurant.filter');
 
+//all-restaurant-search
+Route::get('autosearch' ,[\App\Http\Controllers\Frontend\Restaurant\AllRestaurantController::class,'autoSearch'])->name('autosearch');
+Route::get('/restaurant-all-search',[\App\Http\Controllers\Frontend\Restaurant\AllRestaurantController::class,'restaurantAllSearch'])->name('restaurant.all.search');
+
+

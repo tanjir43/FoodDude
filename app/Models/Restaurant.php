@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Restaurant\Date;
 use App\Models\Restaurant\Hour;
 use App\Models\Restaurant\Menu;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,9 +22,18 @@ class Restaurant extends Authenticatable
     public  function  menu(){
         return $this->hasMany(Menu::class);
     }
-    public  function  hours(){
-        return $this->hasMany(Hour::class);
+    public  function  dates(){
+        return $this->hasMany(Date::class);
     }
+
+//    public  function  hours(){
+//        return $this->hasMany(Hour::class);
+//    }
+
+
+
+
+
 //
 //    public function gethours($request){
 //        $hour     = $request->input('time');

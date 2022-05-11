@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\SearchRestaurant;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Restaurant\CreateSearchRequest;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ use ProtoneMedia\LaravelCrossEloquentSearch\Search;
 
 class SearchRestaurantController extends Controller
 {
-    public function search(Request  $request){
+    public function search(CreateSearchRequest  $request){
 
     $location = $request->input('location');
     $hour     = $request->input('time');
@@ -22,9 +23,13 @@ class SearchRestaurantController extends Controller
 
    if (Restaurant::where('name','LIKE' ,"%$location%") && Restaurant\Hour::where('hour','LIKE',"%$fhour")){
         $data = Restaurant::where('name','LIKE' ,"%$location%")->with('hours');
+//        $hours = Restaurant\Hour::where('hour','LIKE',"%$fhour");
    }
-        $data = $data->paginate(10);
-        return view('frontend.restaurant.searched_restaurant',compact(['data']));
+        $data = $data->paginate(8);
+
+//        $hours = $hours->paginate(8);
+
+        return view('frontend.restaurant.searched_restaurant',compact(['data','fhour']));
 
 
 //        $location = DB::table('restaurants')->get();

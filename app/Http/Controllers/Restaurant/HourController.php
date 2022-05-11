@@ -16,7 +16,9 @@ class HourController extends Controller
     public function index()
     {
         $restaurant = auth('restaurant')->user()->id;
-        $hours = Hour::where('restaurant_id',$restaurant)->get();
+
+        $hours = Hour::where('restaurant_id',$restaurant)->orderBy('id','desc')->get();
+
         return view('backend.restaurant.reservation.hour.index',compact('hours'));
     }
 
@@ -33,13 +35,18 @@ class HourController extends Controller
     public function create()
     {
         $restaurant = auth('restaurant')->user()->id;
-        return view('backend.restaurant.reservation.hour.create',compact('restaurant'));
+
+        $dates      = Restaurant\Date::where('restaurant_id',$restaurant)->where('status','active')->get();
+        return view('backend.restaurant.reservation.hour.create',compact('dates'));
     }
 
 
-    public function store(CreateHourRequest $request)
+    public function store(Request $request)
     {
+
         $data       = $request->all();
+//        $hour = date("H:i:s", strtotime($request->time));
+
         $status = Hour::create($data);
         if ($status){
             return redirect()->route('hour.index')->with('success','Hour created successfully');
@@ -59,7 +66,10 @@ class HourController extends Controller
     public function edit($id)
     {
         $hour = Hour::find($id);
-        return view('backend.restaurant.reservation.hour.edit',compact('hour'));
+        $restaurant = auth('restaurant')->user()->id;
+
+        $dates      = Restaurant\Date::where('restaurant_id',$restaurant)->where('status','active')->get();
+        return view('backend.restaurant.reservation.hour.edit',compact('hour','dates'));
     }
 
 

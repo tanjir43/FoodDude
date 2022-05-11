@@ -48,16 +48,21 @@
                             <form action="{{route('restaurant.search')}}" method="GET" class="search-form font-size-13 ">
                                 <input name="date" type="text" id="date_picker"  value="{{\Illuminate\Support\Carbon::now()->format('Y-m-d')}}" class="custom-select col-25  font-size-13">
 
-                                <input type="number"oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="select-table col-25  font-size-13" placeholder="   Guest no" style="height: 33px ;" name="guest" value="{{old('guest')}}">
+                                <input type="number"oninput="this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" class="select-table col-25  font-size-13" placeholder="    Total Guest " style="height: 33px ;" name="guest" value="{{old('guest')}}">
 
-                                <input type="time" class="select-table col-25  font-size-13 "    name="time" value="{{old('time')}}" style="height: 33px ;">
+{{--                                <input type="time" class="select-table col-25  font-size-13 "    name="time" value="{{old('time')}}" style="height: 33px ;">--}}
+                                <input type="text" class="select-table col-25  font-size-13 "   placeholder="12:10:PM format in 24 hours" name="time" value="{{old('time')}}" style="height: 33px ;">
 
                                 <select class="select-table col-25  font-size-13" style="height: 33px ;" name="type">
                                     <option value="all {{old('type' == 'all' ?  'selected' : '')}}">All</option>
                                     <option value="guest {{old('type' == 'guest' ? 'selected' : '')}}">Guest room</option>
                                 </select>
-                                <input type="text" name="location" class="search-location" placeholder="Location,Restaurant">
-
+                                <input type="text" name="location" class="search-location @error('location') is-invalid @enderror " required placeholder="Location,Restaurant">
+                                @error('location')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                                <button type="submit"  class="btn bg-dark text-light ml-2 font-size-13">Search</button>
                             </form>
                         </div>

@@ -16,16 +16,18 @@ class CreateTablesTable extends Migration
         Schema::create('tables', function (Blueprint $table) {
 
             $table->id();
+            $table->unsignedBigInteger('hour_id');
+            $table->unsignedBigInteger('date_id');
             $table->unsignedBigInteger('restaurant_id');
-//            $table->unsignedBigInteger('hour_id');
             $table->string('name')->unique();
             $table->integer('priority')->default(1)->unique();
             $table->string('slug')->unique();
             $table->text('image')->nullable();
-            $table->string('hour');
             $table->enum('status',['active','inactive'])->default('active');
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
-//            $table->foreign('hour_id')->references('id')->on('hours')->onDelete('cascade');
+
+            $table->foreign('hour_id')->references('id')->on('hours')->onDelete('cascade');
+            $table->foreign('date_id')->references('id')->on('dates')->onDelete('cascade');
             $table->timestamps();
         });
     }

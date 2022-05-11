@@ -83,6 +83,7 @@
                 <ul class="nav-2-level collapse">
 
                     <li>
+                        <a href="{{route('date.index')}}">Manage Dates </a>
                         <a href="{{route('hour.index')}}">Manage Hours </a>
                         <a href="{{route('table.index')}}">Manage Tables </a>
                     </li>

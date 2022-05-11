@@ -35,10 +35,11 @@ class TableController extends Controller
     {
         $restaurant = auth('restaurant')->user()->id;
         $hours      = Restaurant\Hour::where('restaurant_id',$restaurant)->where('status','active')->get();
-        return view('backend.restaurant.reservation.table.create',compact(['restaurant','hours']));
+        $dates      = Restaurant\Date::where('restaurant_id',$restaurant)->where('status','active')->get();
+        return view('backend.restaurant.reservation.table.create',compact(['restaurant','hours','dates']));
     }
 
-    public function store(CreateTableRequest $request)
+    public function store(Request $request)
     {
         $data       = $request->all();
         $slug       =Str::slug($request->input('title'));
@@ -66,7 +67,10 @@ class TableController extends Controller
     public function edit($id)
     {
         $table = Table::find($id);
-        return view('backend.restaurant.reservation.table.edit',compact('table'));
+        $restaurant = auth('restaurant')->user()->id;
+        $hours      = Restaurant\Hour::where('restaurant_id',$restaurant)->where('status','active')->get();
+        $dates      = Restaurant\Date::where('restaurant_id',$restaurant)->where('status','active')->get();
+        return view('backend.restaurant.reservation.table.edit',compact('table','hours','dates'));
     }
 
 

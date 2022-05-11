@@ -106,15 +106,15 @@
                                     <i class="fa fa-star"></i>
 
                                     <span class="text-black-50">(0)</span></span>
-                                <p class="card-text font-size-15 mt-1">{{\Illuminate\Support\Str::ucfirst($restaurant->region)}} - <small>{{  \Illuminate\Support\Str::limit( $restaurant->map_address,40,'...')}} </small></p>
+                                <p class="card-text font-size-15 ">{{\Illuminate\Support\Str::ucfirst($restaurant->region)}} - <small>{{  \Illuminate\Support\Str::limit( $restaurant->map_address,40,'...')}} </small></p>
                                 <div class="row">
                                     <div class="col-md-12 ">
                                         @foreach($restaurant->hours as $hour)
-                                        <button type="button" class="btn btn-danger" style="height: 25px; width: 57px !important;">
-                                            <h6 style="font-size: 12px !important">{{$hour->hour}}</h6>
+                                        <button type="button" class="btn btn-danger mb-3 " style="height: 25px; width: 57px !important;">
+                                            <h6  style="font-size: 12px !important">{{$hour->hour}}</h6>
                                         </button>
                                         @endforeach
-
+                                        <h6  class="font-size-15" style=""><i class="fa fa-bars"></i><small class="ml-2" style="font-weight: bold"> Booked 12 times today</small> </h6>
                                     </div>
                                 </div>
                             </div>

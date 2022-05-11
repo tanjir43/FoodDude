@@ -5,8 +5,29 @@
 @endsection
 
 @section('body')
+    <section>
+        <div class="row p-0 mr-10 ">
+            <div class="col-md-12">
+                <img src="{{asset('/')}}FoodDude/image/food-bg.webp" class="h-90 w-100 pr-0 bg-img" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="searching-functionality2 ">
+                            <div class="col-md">
+                                <form action="{{route('restaurant.all.search')}}" method="GET" class="search-form font-size-13 text-center" style="margin-top: 14px !important;">
 
-    <div class="container">
+                                    <input type="search" style="width: 600px" name="query" id="search_text" class="search-location" placeholder="  Search your favorite restaurants , by restaurant name">
+                                    <button type="submit"  class="btn bg-dark text-light ml-2 font-size-13" style="background-color: black !important;" >Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container pt-5">
         <div class="col-md-12 mx-auto">
         <div class="row ">
             <section class="py-5 bg-light" style="width: 100% !important;">
@@ -43,7 +64,11 @@
                             <div class="row ">
 
                                 <div class="col-md-6 font-weight-bold font-size-15 nunito">
-                                    <div class="card-text">{{\App\Models\Restaurant::count()}} restaurant available </div>
+                                    @if($restaurants)
+                                        <div class="card-text">{{$restaurants->count()}} restaurant available </div>
+                                    @else
+                                        <div class="card-text">{{\App\Models\Restaurant::count()}} restaurant available </div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 text-right">
 
@@ -85,7 +110,7 @@
                                                         </button>
                                                     @endforeach
                                                         <h6 style="font-size: 12px !important">{{  \Illuminate\Support\Str::limit( $restaurant->hours_of_operation,100,'...')}} </h6>
-                                                        <h6 style="font-size: 12px !important" class="pt-2"><span class="text-black-50">Established at : </span>   {{$restaurant->established_at}} </h6>
+                                                        <h6  class="font-size-15" style=""><i class="fa fa-bars"></i><small class="ml-2" style="font-weight: bold"> Booked 12 times today</small> </h6>
 
                                                 </div>
                                             </div>
@@ -95,6 +120,7 @@
                             @empty
                                 <p class="text-danger text-center mt-5">Sorry, No restaurant found!!</p>
                             @endforelse
+                            {{ $restaurants->links() }}
                         </div>
                     </div>
                 </form>

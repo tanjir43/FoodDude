@@ -15,11 +15,16 @@ class CreateHoursTable extends Migration
     {
         Schema::create('hours', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('date_id');
             $table->unsignedBigInteger('restaurant_id');
+
             $table->string('hour');
             $table->enum('status',['active','inactive'])->default('active');
+
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->foreign('date_id')->references('id')->on('dates')->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 

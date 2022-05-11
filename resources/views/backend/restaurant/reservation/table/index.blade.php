@@ -25,6 +25,7 @@
                     <th>Name</th>
                     <th>Image</th>
                     <th>Priority of image</th>
+                    <th>Date</th>
                     <th>Hour</th>
                     <th>Status</th>
                     <th>Action </th>
@@ -36,7 +37,8 @@
                         <td>{{$table->name}}</td>
                         <td><img src="{{asset($table->image)}}" width="100" alt=""></td>
                         <td>{{$table->priority}}</td>
-                        <td>{{$table->hour}}</td>
+                        <td>{{$table->date->date}}</td>
+                        <td>{{$table->hour->hour}}</td>
                         <td class="pl-5" >
                             <input type="checkbox" name="toggle" value="{{$table->id}}" {{$table->status == 'active' ? 'checked' : ''}} data-toggle="toggle" data-on="active" data-off="Inactive" data-onstyle="success" data-offstyle="danger" data-size="sm">
                         </td>

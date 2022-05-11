@@ -31,6 +31,40 @@
                     </div>
                 </div>
 
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"> Date</label>
+                    <div class="col-sm-10">
+                        <select name="date_id" class="form-control @error('date_id') is-invalid @enderror" >
+                            @foreach($dates as $date)
+                                <option value="{{$date->id}}">{{$date->date}}</option>
+                            @endforeach
+                        </select>
+                        @error('date_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"> Hour</label>
+                    <div class="col-sm-10">
+                        <select name="hour_id" class="form-control @error('hour_id') is-invalid @enderror" >
+                            @foreach($hours as $hour)
+                                <option value="{{$hour->id}}">{{$hour->hour}}</option>
+                            @endforeach
+                        </select>
+                        @error('hour_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"> Name <small>(ex:A1)</small></label>
                     <div class="col-sm-10">
@@ -48,22 +82,6 @@
                     <div class="col-sm-10">
                         <input name="priority" type="text"  class="form-control @error('priority') is-invalid @enderror" placeholder="Priority" value="{{old('priority')}}">
                         @error('priority')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"> Hour</label>
-                    <div class="col-sm-10">
-                        <select name="hour" class="form-control">
-                            @foreach($hours as $hour)
-                            <option value="{{$hour->hour}}">{{$hour->hour}}</option>
-                            @endforeach
-                        </select>
-                        @error('hour')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
