@@ -100,16 +100,16 @@
                                     <span class="text-black-50">(0)</span>
                                     <span class="text-black-50 float-right mr-2"> <small>Booked at - {{$restaurant->booking_price}} &#2547;</small> </span>
                                             </span>
-                                            <p class="card-text font-size-15 mt-1"><span class="text-black-50">{{\Illuminate\Support\Str::ucfirst($restaurant->region)}}</span> -   <small>{{  \Illuminate\Support\Str::limit( $restaurant->map_address,30,'...')}} </small></p>
+                                            <p class="card-text font-size-15" style="margin: 2px !important;"><span class="text-black-50">{{\Illuminate\Support\Str::ucfirst($restaurant->region)}}</span> -   <small>{{  \Illuminate\Support\Str::limit( $restaurant->map_address,30,'...')}} </small></p>
                                             <div class="row">
-                                                <div class="col-md-12 ">
+                                                <div class="col-md-12"  style="margin: 2px !important;">
                                                     @foreach($restaurant->hours as $hour)
-                                                        <button type="button" class="btn btn-danger" style="height: 25px; width: 57px !important;">
+                                                        <button type="button" class="btn btn-danger" style="height: 25px; width: 57px !important; ">
                                                             <h6 style="font-size: 12px !important">{{$hour->hour}}</h6>
-                                                            <h6 style="font-size: 12px !important">{{$hour->map_address}}</h6>
+                                                            <h6  style="font-size: 12px !important">{{$hour->map_address}}</h6>
                                                         </button>
                                                     @endforeach
-                                                        <h6 style="font-size: 12px !important">{{  \Illuminate\Support\Str::limit( $restaurant->hours_of_operation,100,'...')}} </h6>
+                                                        <h6 style="font-size: 12px !important ; margin-top: 5px; ">{{  \Illuminate\Support\Str::limit( $restaurant->hours_of_operation,100,'...')}} </h6>
                                                         <h6  class="font-size-15" style=""><i class="fa fa-bars"></i><small class="ml-2" style="font-weight: bold"> Booked 12 times today</small> </h6>
 
                                                 </div>

@@ -15,14 +15,18 @@ class SearchRestaurantController extends Controller
     public function search(CreateSearchRequest  $request){
 
     $location = $request->input('location');
+    $date     = $request->input('date');
+    $dates =  Restaurant\Date::whereDate('date', $date)->get();
+
     $hour     = $request->input('time');
     $guest    = $request->input('guest');
     $fhour = substr($hour, 0, 2);
 
         $data = DB::table('restaurants');
 
-   if (Restaurant::where('name','LIKE' ,"%$location%") && Restaurant\Hour::where('hour','LIKE',"%$fhour")){
-        $data = Restaurant::where('name','LIKE' ,"%$location%")->with('hours');
+   if (Restaurant\Date::whereDate('date','LIKE' ,"%$dates%")->get() && Restaurant::where('name','LIKE' ,"%$location%") && Restaurant\Hour::where('hour','LIKE',"%$fhour")){
+//        $data = Restaurant::where('name','LIKE' ,"%$location%")->with('hours');
+        $data = Restaurant::where('name','LIKE' ,"%$location%")->with('dates');
 //        $hours = Restaurant\Hour::where('hour','LIKE',"%$fhour");
    }
         $data = $data->paginate(8);

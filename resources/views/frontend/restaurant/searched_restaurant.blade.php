@@ -109,10 +109,21 @@
                                 <p class="card-text font-size-15 ">{{\Illuminate\Support\Str::ucfirst($restaurant->region)}} - <small>{{  \Illuminate\Support\Str::limit( $restaurant->map_address,40,'...')}} </small></p>
                                 <div class="row">
                                     <div class="col-md-12 ">
-                                        @foreach($restaurant->hours as $hour)
-                                        <button type="button" class="btn btn-danger mb-3 " style="height: 25px; width: 57px !important;">
-                                            <h6  style="font-size: 12px !important">{{$hour->hour}}</h6>
+{{--                                        @foreach($restaurant->hours as $hour)--}}
+{{--                                        <button type="button" class="btn btn-danger mb-3 " style="height: 25px; width: 57px !important;">--}}
+{{--                                           @foreach($date->hours as $hours)--}}
+{{--                                                <h6  style="font-size: 12px !important">{{$hour->hour}}</h6>--}}
+{{--                                            @endforeach--}}
+{{--                                        </button>--}}
+{{--                                        @endforeach--}}
+
+                                        @foreach($restaurant->dates as $date)
+                                            @foreach($date->hours as $hour)
+
+                                            <button type="button" class="btn btn-danger mb-3 " style="height: 25px; width: 57px !important;">
+                                                <h6  style="font-size: 12px !important">{{$hour->hour}}</h6>
                                         </button>
+                                            @endforeach
                                         @endforeach
                                         <h6  class="font-size-15" style=""><i class="fa fa-bars"></i><small class="ml-2" style="font-weight: bold"> Booked 12 times today</small> </h6>
                                     </div>

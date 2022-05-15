@@ -26,9 +26,9 @@ class Restaurant extends Authenticatable
         return $this->hasMany(Date::class);
     }
 
-//    public  function  hours(){
-//        return $this->hasMany(Hour::class);
-//    }
+    public  function  hours(){
+        return $this->hasMany(Hour::class);
+    }
 
 
 
